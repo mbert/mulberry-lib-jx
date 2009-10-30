@@ -4,7 +4,7 @@
 	Program to create a Makefile given the source file names and a
 	Makefile header.
 
-	Copyright © 1994-99 by John Lindal. All rights reserved.
+	Copyright  1994-99 by John Lindal. All rights reserved.
 
  ******************************************************************************/
 
@@ -41,7 +41,7 @@ static const JCharacter* kVersionStr =
 
 	"makemake 3.3.0\n"
 	"\n"
-	"Copyright © 1994-2005 by John Lindal.  All rights reserved.\n"
+	"Copyright  1994-2005 by John Lindal.  All rights reserved.\n"
 	"\n"
 	"http://www.newplanetsoftware.com/";
 
@@ -822,7 +822,7 @@ main
 	JRemoveFile(tempFileName);
 #endif
 
-	JUpdateCVSIgnore(outputName);
+	//JUpdateCVSIgnore(outputName);
 
 	if (p->SuccessfulFinish())
 		{
