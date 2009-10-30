@@ -3,7 +3,7 @@
 
 	Program to generate JX code from an fdesign .fd file.
 
-	Copyright © 1996-2000 by John Lindal. All rights reserved.
+	Copyright  1996-2000 by John Lindal. All rights reserved.
 
  ******************************************************************************/
 
@@ -31,7 +31,7 @@ static const JCharacter* kVersionStr =
 	"\n"
 	"For use with JX 2.1.0\n"
 	"\n"
-	"Copyright © 1996-2001 New Planet Software, Inc.  All rights reserved.\n"
+	"Copyright  1996-2001 New Planet Software, Inc.  All rights reserved.\n"
 	"\n"
 	"http://www.newplanetsoftware.com/jx/\n"
 	"jx@newplanetsoftware.com";
@@ -625,6 +625,7 @@ JIndex i;
 		assert( !userTopEnclVarName.IsEmpty() );
 		topEnclVarName = userTopEnclVarName;
 
+#if 0
 		output << "    const JRect ";
 		topEnclFrameName.Print(output);
 		output << "    = ";
@@ -646,6 +647,7 @@ JIndex i;
 		output << ".height());" << endl;
 
 		output << endl;
+#endif
 		}
 
 	// We need to calculate the enclosure for each object.  Since objects
@@ -776,12 +778,16 @@ JIndex i;
 
 		// callback (ignored)
 
-		JIgnoreLine(input);
+		//JIgnoreLine(input);
+		JString cb = JReadLine(input);
+		RemoveIdentifier(kObjCallbackMarker, &cb);
 
 		// callback argument
 
 		JString cbArg = JReadLine(input);
 		RemoveIdentifier(kObjCBArgMarker, &cbArg);
+		if (cbArg == "-")
+			cbArg = "";
 
 		// don't bother to generate code for initial box
 		// if it is FL_BOX, FLAT_BOX, FL_COL1
@@ -840,15 +846,23 @@ JIndex i;
 		objTypes->Append(className);
 
 		JString argList;
-		if (!GetConstructor(flClass, flType, &label, className, &argList))
-			{
-			cerr << "Unsupported class: " << flClass << ", " << flType << endl;
-			rectList.RemoveElement(objCount);
-			isInstanceVar.RemoveElement(objCount);
-			objNames->DeleteElement(objCount);
-			objTypes->DeleteElement(objCount);
-			continue;
-			}
+		if (cb.IsEmpty())
+		{
+			if (!GetConstructor(flClass, flType, &label, className, &argList))
+				{
+				cerr << "Unsupported class: " << flClass << ", " << flType << endl;
+				rectList.RemoveElement(objCount);
+				isInstanceVar.RemoveElement(objCount);
+				objNames->DeleteElement(objCount);
+				objTypes->DeleteElement(objCount);
+				continue;
+				}
+		}
+		else
+		{
+			SplitClassNameAndArgs(cb, className, &argList);
+			cbArg = "";
+		}
 
 		// generate the actual code
 
@@ -894,9 +908,11 @@ JIndex i;
 			}
 
 		if (*className == "JXStaticText"   || *className == "JXTextButton" ||
-			*className == "JXTextCheckbox" || *className == "JXTextRadioButton" ||
-			*className == "JXTextMenu")
+			*className == "JXTextCheckbox" || *className == "JXTextCheckbox3" || *className == "JXTextRadioButton" ||
+			*className == "JXTextMenu" ||
+			*className == "CStaticText")
 			{
+#if 0
 			JString id = *varName;
 			id += "::";
 			id += formName;
@@ -908,6 +924,10 @@ JIndex i;
 			output << "\"), ";
 
 			stringMgr.SetElement(id, label, JPtrArrayT::kDelete);
+#endif
+			output << "\"";
+			label.Print(output);
+			output << "\", ";
 			}
 
 		enclName.Print(output);
@@ -925,6 +945,31 @@ JIndex i;
 
 		ApplyOptions(output, *className, formName, tagName, *varName, optionValues,
 					 lSize, lStyle, lColor, &stringMgr);
+
+		// Special behaviours - added by CD
+		if ((*className == "JXStaticText") ||
+			(*className == "JXImageWidget") ||
+			(*className == "JXScrollbarSet"))
+		{
+			if (boxType == "FL_DOWN_BOX")
+			{
+				output << "    ";
+				varName->Print(output);
+				output << "->SetBorderWidth(kJXDefaultBorderWidth);";
+				output << endl;
+			}
+		}
+		else if (*className == "JXRadioGroup")
+		{
+			if (flType == "EMBOSSED_FRAME")
+			{
+				output << "    ";
+				varName->Print(output);
+				output << "->SetBorderWidth(0);";
+				output << endl;
+			}
+		}
+
 		output << endl;
 
 		// now we know the object is valid
@@ -957,6 +1002,7 @@ JIndex i;
 
 	if (tagName != kDefaultDelimTag)
 		{
+#if 0
 		output << "    ";
 		topEnclVarName.Print(output);
 		output << "->SetSize(";
@@ -965,6 +1011,7 @@ JIndex i;
 		topEnclFrameName.Print(output);
 		output << ".height());" << endl;
 		output << endl;
+#endif
 		}
 
 	// throw away temporary variables
@@ -1113,7 +1160,7 @@ GetTempVarName
 	const JSize count    = objNames.GetElementCount();
 	for (JIndex i=1; i<=INT_MAX; i++)
 		{
-		*varName = prefix + JString(i) + suffix;
+		*varName = prefix + JString(i);// + suffix;
 		JBoolean unique = kJTrue;
 		for (JIndex j=1; j<=count; j++)
 			{
@@ -1335,7 +1382,7 @@ ApplyOptions
 				// shortcuts
 
 				optionMap >> ws >> supported;
-				if (supported)
+				if (true)
 					{
 					optionMap >> ws;
 					const JString function = JReadUntilws(optionMap);
@@ -1351,6 +1398,7 @@ ApplyOptions
 						output << "    ";
 						varName.Print(output);
 						output << "->";
+#if 0
 						function.Print(output);
 						output << "(JGetString(\"";
 						id.Print(output);
@@ -1359,6 +1407,10 @@ ApplyOptions
 						JString* s = new JString(*value);
 						assert( s != NULL );
 						stringMgr->SetElement(id, s, JPtrArrayT::kDelete);
+#endif
+						output << "SetShortcuts(";
+						output << *value;
+						output << ");" << endl;
 						}
 					}
 				else
@@ -1371,7 +1423,7 @@ ApplyOptions
 				for (i=2; i<=kOptionCount; i++)
 					{
 					optionMap >> ws >> supported;
-					if (supported)
+					if (false)
 						{
 						optionMap >> ws;
 						const JString defValue = JReadUntilws(optionMap);
@@ -1461,23 +1513,23 @@ ApplyOptions
 
 				if (style.bold)
 					{
-					output << "kJTrue, ";
+					output << "kTrue, ";
 					}
 				else
 					{
-					output << "kJFalse, ";
+					output << "kFalse, ";
 					}
 
 				if (style.italic)
 					{
-					output << "kJTrue, ";
+					output << "kTrue, ";
 					}
 				else
 					{
-					output << "kJFalse, ";
+					output << "kFalse, ";
 					}
 
-				output << "0, kJFalse, ";
+				output << "0, kFalse, ";
 				jxColor.Print(output);
 				output << ");" << endl;
 

@@ -4,8 +4,11 @@ JXStaticText
 
 JXTextButton
 JXTextCheckbox
+JXTextCheckbox3
 JXTextRadioButton
 
 JXStringInput
 JXFloatInput
 JXIntegerInput
+
+CStaticText

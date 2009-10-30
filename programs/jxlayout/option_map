@@ -22,7 +22,7 @@ JXEngravedRect
 
 JXStaticText
 	F
-	T	FL_COL1				SetBackgroundColor
+	F	FL_COL1				SetBackgroundColor
 	F
 
 JXTextButton
@@ -36,6 +36,11 @@ JXImageButton
 	F
 
 JXTextCheckbox
+	T						SetShortcuts
+	T	FL_COL1				SetNormalColor
+	T	FL_YELLOW			SetPushedColor
+
+JXTextCheckbox3
 	T						SetShortcuts
 	T	FL_COL1				SetNormalColor
 	T	FL_YELLOW			SetPushedColor
