@@ -1,0 +1,12 @@
+//  -*- MPC -*-
+// ace.mwc,v 1.8 2005/02/14 22:37:14 shuston Exp
+
+workspace {
+  ace.mpc
+  ace_flreactor.mpc
+  ace_qtreactor.mpc
+  ace_tkreactor.mpc
+  ace_xtreactor.mpc
+  QoS
+  SSL
+}

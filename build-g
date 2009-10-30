@@ -1,0 +1,7 @@
+#!/bin/bash
+
+J_COMPILE_DEBUG=-g
+export J_COMPILE_DEBUG
+
+./build
+

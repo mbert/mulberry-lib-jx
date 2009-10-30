@@ -1,0 +1,12 @@
+// -*- MPC -*-
+// qt_reactor.mpb,v 1.4 2005/01/05 19:04:42 parsons Exp
+
+feature(qt): ace_qt, qt_moc {
+  MOC_Files {
+    QtReactor.h
+  }
+
+  Source_Files(ACE_COMPONENTS) {
+      QtReactor_moc.cpp
+  }
+}

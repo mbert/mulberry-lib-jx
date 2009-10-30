@@ -1,0 +1,15 @@
+// -*- MPC -*-
+// other.mpb,v 1.3 2005/01/05 15:33:19 parsons Exp
+
+feature(ace_other) {
+  Source_Files(ACE_COMPONENTS) {
+    Local_Name_Space.cpp
+    Name_Proxy.cpp
+    Name_Request_Reply.cpp
+    Name_Space.cpp
+    Naming_Context.cpp
+    Registry_Name_Space.cpp
+    Remote_Name_Space.cpp
+    NT_Service.cpp
+  }
+}

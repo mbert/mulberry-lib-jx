@@ -1,0 +1,10 @@
+0
+upButton::JXSaveFileDialog::JXLayout "Up"
+itsSaveButton::JXSaveFileDialog::JXLayout "Save"
+filterLabel::JXSaveFileDialog::JXLayout "Filter:"
+showHiddenCB::JXSaveFileDialog::JXLayout "Show hidden files"
+promptLabel::JXSaveFileDialog::JXLayout ""
+itsSaveButton::JXSaveFileDialog::shortcuts::JXLayout "^M"
+cancelButton::JXSaveFileDialog::JXLayout "Cancel"
+homeButton::JXSaveFileDialog::JXLayout "Home"
+pathLabel::JXSaveFileDialog::JXLayout "Path:"

@@ -1,0 +1,8 @@
+// -*- MPC -*-
+// filecache.mpb,v 1.2 2005/01/05 15:33:19 parsons Exp
+
+feature(ace_filecache) {
+  Source_Files(ACE_COMPONENTS) {
+    Filecache.cpp
+  }
+}

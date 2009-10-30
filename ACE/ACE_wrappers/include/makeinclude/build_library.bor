@@ -1,0 +1,12 @@
+#
+# build_library.bor,v 4.2 2003/11/28 15:10:01 jwillemsen Exp
+#
+# Makefile rules for building a static or dynamic library
+#
+
+!ifdef STATIC
+!include <$(ACE_ROOT)\include\makeinclude\build_lib.bor>
+!else
+!include <$(ACE_ROOT)\include\makeinclude\build_dll.bor>
+!endif
+

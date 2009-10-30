@@ -1,0 +1,76 @@
+# Makefile for building the ACE_QoS library with Borland C++ Make
+
+NAME = ACE_QoS
+
+NO_FULL_PATH=1
+
+OBJFILES = \
+	$(OBJDIR)\QoS_Decorator.$(OBJ_EXT) \
+	$(OBJDIR)\QoS_Manager.$(OBJ_EXT) \
+	$(OBJDIR)\QoS_Session_Factory.$(OBJ_EXT) \
+	$(OBJDIR)\QoS_Session_Impl.$(OBJ_EXT) \
+	$(OBJDIR)\SOCK_Dgram_Mcast_QoS.$(OBJ_EXT)
+
+LFLAGS = \
+        -L"." \
+        -j"."  \
+        -L"..\..\lib" \
+        -j"..\..\lib" 
+
+LIBFILES = \
+	ACE$(LIB_DECORATOR).lib \
+	$(DUMMY_VALUE_NOT_ENDING_IN_BACKSLASH)
+
+!ifdef STATIC
+LIB_FLAGS = \
+        -DACE_AS_STATIC_LIBS
+!else
+DLL_FLAGS = \
+        -DACE_QoS_BUILD_DLL
+!endif
+
+CFLAGS = \
+	-DACE_HAS_WINSOCK2_GQOS \
+	-I"..\.." \
+	$(LIB_FLAGS) \
+	$(DLL_FLAGS)
+
+CPPDIR = .
+CDIR   = .
+
+INCDIR_NAME = ace\QoS
+
+#
+# pkgconfig_files rules
+#
+
+
+#
+# Override defaults in outputdir.bor
+#
+INSTALL_THIS_TARGET = 1
+
+INCLUDES_INSTALL=1
+BINDIR = ..\..\lib
+
+!include <$(ACE_ROOT)\include\makeinclude\build_library.bor>
+
+includes_install: $(INCLUDES)
+	-@if not exist $(INSTALL_DIR)\include\$(INCDIR_NAME)\. mkdir $(INSTALL_DIR)\include\$(INCDIR_NAME)\.
+	-&copy /Y ACE_QoS_Export.h $(INSTALL_DIR)\include\$(INCDIR_NAME)\ACE_QoS_Export.h 1> NUL
+	-@if not exist $(INSTALL_DIR)\include\$(INCDIR_NAME)\. mkdir $(INSTALL_DIR)\include\$(INCDIR_NAME)\.
+	-&copy /Y QoS_Decorator.h $(INSTALL_DIR)\include\$(INCDIR_NAME)\QoS_Decorator.h 1> NUL
+	-@if not exist $(INSTALL_DIR)\include\$(INCDIR_NAME)\. mkdir $(INSTALL_DIR)\include\$(INCDIR_NAME)\.
+	-&copy /Y QoS_Manager.h $(INSTALL_DIR)\include\$(INCDIR_NAME)\QoS_Manager.h 1> NUL
+	-@if not exist $(INSTALL_DIR)\include\$(INCDIR_NAME)\. mkdir $(INSTALL_DIR)\include\$(INCDIR_NAME)\.
+	-&copy /Y QoS_Session.h $(INSTALL_DIR)\include\$(INCDIR_NAME)\QoS_Session.h 1> NUL
+	-@if not exist $(INSTALL_DIR)\include\$(INCDIR_NAME)\. mkdir $(INSTALL_DIR)\include\$(INCDIR_NAME)\.
+	-&copy /Y QoS_Session_Factory.h $(INSTALL_DIR)\include\$(INCDIR_NAME)\QoS_Session_Factory.h 1> NUL
+	-@if not exist $(INSTALL_DIR)\include\$(INCDIR_NAME)\. mkdir $(INSTALL_DIR)\include\$(INCDIR_NAME)\.
+	-&copy /Y QoS_Session_Impl.h $(INSTALL_DIR)\include\$(INCDIR_NAME)\QoS_Session_Impl.h 1> NUL
+	-@if not exist $(INSTALL_DIR)\include\$(INCDIR_NAME)\. mkdir $(INSTALL_DIR)\include\$(INCDIR_NAME)\.
+	-&copy /Y SOCK_Dgram_Mcast_QoS.h $(INSTALL_DIR)\include\$(INCDIR_NAME)\SOCK_Dgram_Mcast_QoS.h 1> NUL
+	-@if not exist $(INSTALL_DIR)\include\$(INCDIR_NAME)\. mkdir $(INSTALL_DIR)\include\$(INCDIR_NAME)\.
+	-&copy /Y QoS_Session_Impl.i $(INSTALL_DIR)\include\$(INCDIR_NAME)\QoS_Session_Impl.i 1> NUL
+	-@if not exist $(INSTALL_DIR)\include\$(INCDIR_NAME)\. mkdir $(INSTALL_DIR)\include\$(INCDIR_NAME)\.
+	-&copy /Y SOCK_Dgram_Mcast_QoS.i $(INSTALL_DIR)\include\$(INCDIR_NAME)\SOCK_Dgram_Mcast_QoS.i 1> NUL

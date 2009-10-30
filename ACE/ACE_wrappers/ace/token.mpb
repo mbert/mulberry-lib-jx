@@ -1,0 +1,15 @@
+// -*- MPC -*-
+// token.mpb,v 1.2 2005/01/05 15:33:19 parsons Exp
+
+feature(ace_token) {
+  macros += ACE_HAS_ACE_TOKEN
+
+  Source_Files(ACE_COMPONENTS) {
+    Local_Tokens.cpp
+    Remote_Tokens.cpp
+    Token_Collection.cpp
+    Token_Invariants.cpp
+    Token_Manager.cpp
+    Token_Request_Reply.cpp
+  }
+}

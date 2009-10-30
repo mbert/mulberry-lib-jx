@@ -1,0 +1,25 @@
+0
+
+<PRE>TOCHelp
+
+"<html>
+
+<head>
+<title> Table of Contents </title>
+</head>
+
+<h3>Table of Contents</h3>
+
+<ul>
+<li> <a href=jxhelp:<PRE>OverviewHelp>Overview</a>
+<p>
+<li> <a href=jxhelp:<PRE>MainHelp>Main window</a>
+<p>
+<li> <a href=jxhelp:<PRE>Changes>Changes</a>
+<p>
+<li> <a href=jxhelp:<PRE>Credits>Credits</a>
+<p>
+</ul>
+For more information about a particular feature, simply click on the underlined text.
+
+</html>"

@@ -1,0 +1,40 @@
+#!/usr/bin/perl
+
+sub IgnoreComment()
+{
+	while (<>)
+		{
+		return if /\*\//;
+		}
+}
+
+sub IgnoreArgs()
+{
+	while (<>)
+		{
+		return if /^\s*\)\s*$/;
+		}
+}
+
+$count = 0;
+while (<>)
+	{
+	if (/^\s*($|\/\/|\/\*.+\*\/\s*$|([{}:]|};)\s*$)/)
+		{
+		next;
+		}
+	elsif (/^\s*\/\*/)
+		{
+		IgnoreComment();
+		}
+	elsif (/^\s*\(\s*$/)
+		{
+		IgnoreArgs();
+		}
+	else
+		{
+		$count++;
+		}
+	}
+
+print "Total: $count\n";

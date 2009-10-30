@@ -1,0 +1,26 @@
+J_COMPILE_DEBUG=-g
+export J_COMPILE_DEBUG
+
+cd libjcore/code
+\rm JAssertBase.o
+\rm JBroadcaster.o
+\rm JMemoryManager.o
+\rm JString.o
+\rm JTextEditor.o
+\rm JTEUndoBase.o
+\rm JTEUndoStyle.o
+cd ../..
+
+cd libjx/code
+\rm JXApplication.o
+\rm JXContainer.o
+\rm JXDisplay.o
+\rm JXDirector.o
+\rm JXScrollableWidget.o
+\rm JXWidget.o
+\rm JXWindow.o
+\rm JXWindowDirector.o
+
+\rm JXMenu.o JXMenuDirector.o JXMenuManager.o JXMenuTable.o
+\rm JXTextMenu.o JXTextMenuDirector.o JXTextMenuTable.o
+cd ../..

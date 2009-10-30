@@ -1,0 +1,11 @@
+# Constants used in all program Makefiles
+
+#
+# expiration time for betas
+#
+
+J_STD_EXPIRE_DELTA       := 1month
+J_BETA_EXPIRE_TIME_STAMP := ${shell date -d ${J_STD_EXPIRE_DELTA} +%s}
+
+J_DEMO_EXPIRE_DELTA      := 2month
+J_DEMO_EXPIRE_TIME_STAMP := ${shell date -d ${J_DEMO_EXPIRE_DELTA} +%s}

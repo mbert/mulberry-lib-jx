@@ -1,0 +1,11 @@
+0
+itsOpenButton::JXChoosePathDialog::shortcuts::JXLayout "^M"
+pathLabel::JXChoosePathDialog::JXLayout "Path:"
+upButton::JXChoosePathDialog::JXLayout "Up"
+filterLabel::JXChoosePathDialog::JXLayout "Filter:"
+showHiddenCB::JXChoosePathDialog::JXLayout "Show hidden files"
+itsOpenButton::JXChoosePathDialog::JXLayout "Open"
+explanText::JXChoosePathDialog::JXLayout "Go into the directory and click on Here."
+cancelButton::JXChoosePathDialog::JXLayout "Cancel"
+homeButton::JXChoosePathDialog::JXLayout "Home"
+itsSelectButton::JXChoosePathDialog::JXLayout "Here"

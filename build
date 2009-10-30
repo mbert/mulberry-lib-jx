@@ -1,0 +1,29 @@
+#!/bin/bash
+
+J_BUILD_BOTH_LIB=1
+export J_BUILD_BOTH_LIB
+
+os=`/bin/uname -s`
+
+cpu=`/bin/uname -m`
+
+case $os in
+Linux)
+	case $cpu in
+		ppc)
+		echo "Building for LinuxPPC"
+		make linuxppc2000
+		;;
+
+		i686|i86pc)
+		echo "Building for Linux x86"
+		make linux_intel
+		;;
+	esac
+	;;
+
+SunOS)
+	echo "Building for Solaris"
+	make sunos5.8-g++
+	;;
+esac

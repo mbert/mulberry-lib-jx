@@ -1,0 +1,30 @@
+//  -*- MPC -*- now wouldn't this be cool...
+// ace_tkreactor.mpc,v 4.4 2005/02/01 13:43:23 jwillemsen Exp
+
+project(ACE_TkReactor) : acedefaults, core, acelib, ace_tk {
+
+  sharedname   = ACE_TkReactor
+  dynamicflags = ACE_TKREACTOR_BUILD_DLL
+
+  Source_Files {
+    TkReactor.cpp
+  }
+
+  Header_Files {
+    ACE_TkReactor_export.h
+    TkReactor.h
+  }
+
+  Inline_Files {
+  }
+
+  Template_Files {
+  }
+
+  Resource_Files {
+  }
+
+  Pkgconfig_Files {
+    ACE_TkReactor.pc.in
+  }
+}

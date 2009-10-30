@@ -1,0 +1,10 @@
+0
+itsOpenButton::JXChooseFileDialog::JXLayout "Open"
+cancelButton::JXChooseFileDialog::JXLayout "Cancel"
+homeButton::JXChooseFileDialog::JXLayout "Home"
+pathLabel::JXChooseFileDialog::JXLayout "Path:"
+itsSelectAllButton::JXChooseFileDialog::JXLayout "Select all"
+upButton::JXChooseFileDialog::JXLayout "Up"
+itsOpenButton::JXChooseFileDialog::shortcuts::JXLayout "^M"
+filterLabel::JXChooseFileDialog::JXLayout "Filter:"
+showHiddenCB::JXChooseFileDialog::JXLayout "Show hidden files"

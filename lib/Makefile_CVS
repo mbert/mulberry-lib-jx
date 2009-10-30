@@ -1,0 +1,98 @@
+# CVS scripts
+#
+# must be run from JX root directory
+
+JX_ROOT := ..
+
+include ${JX_ROOT}/include/make/jx_constants
+include ${JX_ROOT}/include/make/jfs_constants
+include ${JX_ROOT}/include/make/jexpr_constants
+include ${JX_ROOT}/include/make/j2dplot_constants
+include ${JX_ROOT}/include/make/j3d_constants
+#include ${JX_ROOT}/include/make/jcal_constants
+#include ${JX_ROOT}/include/make/jspell_constants
+
+CVSLINK = ${RM} $2; ln -s $1 $2
+
+.PHONY : cvsprep
+cvsprep:
+	@./updateacelinks ${ACE_LIB_VERSION} ${ACE_VERSION}; \
+     ./updatelinks jcore ${JX_LIB_VERSION}; \
+     ./updatelinks jx ${JX_LIB_VERSION}; \
+     ./updatelinks jfs ${JFS_LIB_VERSION}; \
+     ./updatelinks jexpr ${JEXPR_LIB_VERSION}; \
+     ./updatelinks j2dplot ${J2DPLOT_LIB_VERSION}; \
+     ./updatelinks j3d ${J3D_LIB_VERSION};
+#     ./updatelinks jcal ${JCAL_LIB_VERSION};
+#     ./updatelinks jspell ${JSPELL_LIB_VERSION}
+	@${call CVSLINK, ../Mesa/lib/libGL.a, libGL.a}
+	@${call CVSLINK, ../Mesa/lib/libGL.so, libGL.so}
+	@${call CVSLINK, ../Mesa/lib/libGL.so.1, libGL.so.1}
+	@${call CVSLINK, ../Mesa/lib/libGLU.a, libGLU.a}
+	@${call CVSLINK, ../Mesa/lib/libGLU.so, libGLU.so}
+	@${call CVSLINK, ../Mesa/lib/libGLU.so.1, libGLU.so.1}
+	@${call CVSLINK, ../Mesa/lib/libglut.a, libglut.a}
+	@${call CVSLINK, ../Mesa/lib/libglut.so, libglut.so}
+	@${call CVSLINK, ../Mesa/lib/libglut.so.3, libglut.so.3}
+	@${call CVSLINK, ../misc/xpm/lib/libXpm.a, libXpm.a}
+	@${call CVSLINK, ../misc/xpm/lib/libXpm.so, libXpm.so}
+
+	@cp -f ${JX_ROOT}/libjcore/jStringData_init.h ${JX_ROOT}/libjcore/code/jStringData.h
+	@chmod u+w ${JX_ROOT}/libjcore/code/jStringData.h
+
+	@${call CVSLINK, ../libjcore/code, ${JX_ROOT}/include/jcore}
+	@${call CVSLINK, ../libjx/code, ${JX_ROOT}/include/jx}
+	@${call CVSLINK, ../libjx/image, ${JX_ROOT}/include/jximage}
+	@${call CVSLINK, ../libjx/strings, ${JX_ROOT}/include/jxstrings}
+	@${call CVSLINK, ../libjfs/code, ${JX_ROOT}/include/jfs}
+	@${call CVSLINK, ../libjfs/strings, ${JX_ROOT}/include/jfsstrings}
+	@${call CVSLINK, ../libjexpr/code, ${JX_ROOT}/include/jexpr}
+	@${call CVSLINK, ../libj2dplot/code, ${JX_ROOT}/include/j2dplot}
+	@${call CVSLINK, ../libj3d/code, ${JX_ROOT}/include/j3d}
+#	@${call CVSLINK, ../libjcal/code, ${JX_ROOT}/include/jcal}
+	@${call CVSLINK, ../libjspell/code, ${JX_ROOT}/include/jspell}
+	@${call CVSLINK, ../Mesa/include, ${JX_ROOT}/include/Mesa}
+
+	@${call CVSLINK, ${ACE_ROOT}, ${JX_ROOT}/ACE/ACE_wrappers}
+	@${call CVSLINK, ${MESA_ROOT}, ${JX_ROOT}/Mesa}
+	@mkdir -p ${JX_ROOT}/misc/xpm/exports/include/X11
+	@${call CVSLINK, ../../../lib/xpm.h, ${JX_ROOT}/misc/xpm/exports/include/X11/xpm.h}
+	@${call CVSLINK, ../../misc/pcre/pcre.h, ${JX_ROOT}/libjcore/code/regex.h}
+
+	@${call CVSLINK, ../../../include/jxstrings/jxRegexHelpText, ${JX_ROOT}/programs/code_crusader/strings/cbRegexHelpText}
+	@${call CVSLINK, ../../../include/jxstrings/jxRegexQRefText, ${JX_ROOT}/programs/code_crusader/strings/cbRegexQRefText}
+	@${call CVSLINK, ../../../include/jxstrings/jxDockHelpText, ${JX_ROOT}/programs/code_crusader/strings/cbDockHelpText}
+	@${call CVSLINK, ../../../include/jximage/new_planet_software.xpm, ${JX_ROOT}/programs/code_crusader/desktop/new_planet_software.xpm}
+	@${call CVSLINK, ../../../include/jximage/new_planet_software_small.xpm, ${JX_ROOT}/programs/code_crusader/desktop/new_planet_software_small.xpm}
+
+	@${call CVSLINK, ../../../include/jximage/new_planet_software.xpm, ${JX_ROOT}/programs/code_medic/desktop/new_planet_software.xpm}
+	@${call CVSLINK, ../../../include/jximage/new_planet_software_small.xpm, ${JX_ROOT}/programs/code_medic/desktop/new_planet_software_small.xpm}
+	@${call CVSLINK, ../../../include/jxstrings/jxSearchTextHelpText, ${JX_ROOT}/programs/code_medic/strings/cmSearchTextHelpText}
+	@${call CVSLINK, ../../../include/jxstrings/jxRegexHelpText, ${JX_ROOT}/programs/code_medic/strings/cmRegexHelpText}
+	@${call CVSLINK, ../../../include/jxstrings/jxRegexQRefText, ${JX_ROOT}/programs/code_medic/strings/cmRegexQRefText}
+	@${call CVSLINK, ../../../include/jxstrings/jxDockHelpText, ${JX_ROOT}/programs/code_medic/strings/cmDockHelpText}
+	@${call CVSLINK, ../symlink/test.cc, ${JX_ROOT}/programs/code_medic/test/symlink2/test_lnk.cc}
+	@${call CVSLINK, test.cc, ${JX_ROOT}/programs/code_medic/test/symlink/test_lnk.cc}
+
+	@${call CVSLINK, ../../../include/jximage/new_planet_software.xpm, ${JX_ROOT}/programs/code_mill/desktop/new_planet_software.xpm}
+	@${call CVSLINK, ../../../include/jximage/new_planet_software_small.xpm, ${JX_ROOT}/programs/code_mill/desktop/new_planet_software_small.xpm}
+
+	@${call CVSLINK, ../../../include/jxstrings/jxSearchTextHelpText, ${JX_ROOT}/programs/systemg/strings/SyGSearchTextHelpText}
+	@${call CVSLINK, ../../../include/jxstrings/jxRegexHelpText, ${JX_ROOT}/programs/systemg/strings/SyGRegexHelpText}
+	@${call CVSLINK, ../../../include/jxstrings/jxRegexQRefText, ${JX_ROOT}/programs/systemg/strings/SyGRegexQRefText}
+	@${call CVSLINK, ../../../include/jfsstrings/jfsRunFileHelpText, ${JX_ROOT}/programs/systemg/strings/SyGRunFileHelpText}
+	@${call CVSLINK, ../../../include/jfsstrings/jfsBindingEditorHelpText, ${JX_ROOT}/programs/systemg/strings/SyGBindingEditorHelpText}
+	@${call CVSLINK, ../../../include/jfsstrings/jfsRunCommandHelpText, ${JX_ROOT}/programs/systemg/strings/SyGRunCommandHelpText}
+	@${call CVSLINK, ../../../include/jximage/new_planet_software.xpm, ${JX_ROOT}/programs/systemg/desktop/new_planet_software.xpm}
+	@${call CVSLINK, ../../../include/jximage/new_planet_software_small.xpm, ${JX_ROOT}/programs/systemg/desktop/new_planet_software_small.xpm}
+
+	@${call CVSLINK, ../../../include/jximage/new_planet_software.xpm, ${JX_ROOT}/programs/leibnitz/desktop/new_planet_software.xpm}
+	@${call CVSLINK, ../../../include/jximage/new_planet_software_small.xpm, ${JX_ROOT}/programs/leibnitz/desktop/new_planet_software_small.xpm}
+
+	@${call CVSLINK, ${HOME}/.poirot/topics, ${JX_ROOT}/programs/poirot/topics}
+	@${call CVSLINK, ${HOME}/.poirot/unused, ${JX_ROOT}/programs/poirot/topics_unused}
+
+.PHONY : cvsupdate
+cvsupdate:
+	@cvs -q update -P -d
+	@cd lib; ${MAKE} Makefiles

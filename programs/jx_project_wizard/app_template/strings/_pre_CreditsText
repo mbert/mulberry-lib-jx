@@ -1,0 +1,41 @@
+0
+
+<PRE>Credits
+
+"<html>
+
+<head>
+<title> Credits </title>
+</head>
+
+You can obtain the latest version of <Program> from the
+<a href=<URL>>official web site</a>.
+<p>
+My thanks to everyone who has submitted bug reports, suggestions, and/or code.
+If you find a bug or have a suggestion for improving this program, please
+let me know.
+<p>
+<Author><br>
+<a href=mailto:<EMail>>
+<address><EMail></address>
+</a>
+<p>
+<hr>
+<p>
+This program was written using:
+<ul>
+<li> <a href=http://www.newplanetsoftware.com/jx/>
+	  JX Application Framework <br></a>
+     http://www.newplanetsoftware.com/jx/
+<p>
+<li> <a href=http://cs.wustl.edu/~schmidt/ACE.html>
+	  ACE networking library <br></a>
+     http://siesta.cs.wustl.edu/~schmidt/ACE.html
+<p>
+     ACE is copyrighted by Douglas C. Schmidt and his research group at Washington
+     University, Copyright (c) 1993-1997, all rights reserved.
+<p>
+<li> Henry Spencer's Regular Expression library
+</ul>
+
+</html>"
