@@ -324,7 +324,11 @@
 
 // Platform supplies scandir()
 #define ACE_HAS_SCANDIR
-#define ACE_SCANDIR_CMP_USES_VOIDPTR
+#if (__GLIBC__ < 2) || (__GLIBC__ == 2 && __GLIBC_MINOR__ < 10)
+// Although the scandir man page says otherwise, this setting is correct.
+// The setting was fixed in 2.10, so do not use the hack after that.
+#define ACE_SCANDIR_CMP_USES_CONST_VOIDPTR
+#endif
 
 //#define ACE_LACKS_STRRECVFD
 #define ACE_HAS_STRBUF_T
