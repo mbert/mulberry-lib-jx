@@ -145,7 +145,7 @@ JATanh
 
 namespace std
 {
-	template double __cmath_power(double, unsigned int);
+	double __cmath_power(double, unsigned int);
 	template double abs<double>(complex<double> const&);
 	template double arg<double>(complex<double> const&);
 	template complex<double> conj<double>(complex<double> const&);
