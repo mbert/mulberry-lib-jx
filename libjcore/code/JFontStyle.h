@@ -3,7 +3,7 @@
 
 	Style information for drawing text.
 
-	Copyright © 1996 by John Lindal. All rights reserved.
+	Copyright ï¿½ 1996 by John Lindal. All rights reserved.
 
  ******************************************************************************/
 
@@ -20,9 +20,9 @@
 typedef unsigned long	JFontID;
 
 #ifdef _J_USE_XFT
-const JSize kJDefaultFontSize = 10;
+const JSize kJDefaultFontSize = 8;
 #else
-const JSize kJDefaultFontSize = 12;
+const JSize kJDefaultFontSize = 8;
 #endif
 
 struct JFontStyle

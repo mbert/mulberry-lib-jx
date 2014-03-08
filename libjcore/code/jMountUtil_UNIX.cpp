@@ -3,7 +3,7 @@
 
 	Utility functions for mounting UNIX file system.
 
-	Copyright © 2000-2001 by John Lindal. All rights reserved.
+	Copyright ï¿½ 2000-2001 by John Lindal. All rights reserved.
 
  ******************************************************************************/
 
@@ -555,7 +555,7 @@ JIsMounted
 			isMounted = kJTrue;
 			if (writable != NULL)
 				{
-				*writable = JNegate(info[i].f_flags & MNT_RDONLY != 0);
+				*writable = JNegate((info[i].f_flags & MNT_RDONLY) != 0);
 				}
 			if (isTop != NULL)
 				{

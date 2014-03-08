@@ -22,7 +22,7 @@
 
 	BASE CLASS = JOrderedSet
 
-	Copyright © 1994-97 by John Lindal. All rights reserved.
+	Copyright ï¿½ 1994-97 by John Lindal. All rights reserved.
 
  ******************************************************************************/
 
@@ -100,7 +100,7 @@ JRunArray<T>::operator=
 	JCollection::operator=(source);		// JOrderedSet::operator= is private
 
 	*itsRuns = *(source.itsRuns);
-	OrderedSetAssigned(source);
+	JRunArray<T>::OrderedSetAssigned(source);
 
 	return *this;
 }
@@ -970,7 +970,7 @@ JRunArray<T>::Sort()
 {
 	assert( itsCurrentCompareObj == NULL );
 
-	const JBoolean ok = GetCompareObject(&itsCurrentCompareObj);
+	const JBoolean ok = JRunArray<T>::GetCompareObject(&itsCurrentCompareObj);
 	assert( ok );
 
 	itsRuns->SetCompareFunction(CompareRuns);
@@ -1007,7 +1007,7 @@ JRunArray<T>::SearchSorted1
 {
 	assert( itsCurrentCompareObj == NULL );
 
-	const JBoolean ok = GetCompareObject(&itsCurrentCompareObj);
+	const JBoolean ok = JRunArray<T>::GetCompareObject(&itsCurrentCompareObj);
 	assert( ok );
 
 	itsRuns->SetCompareFunction(CompareRuns);

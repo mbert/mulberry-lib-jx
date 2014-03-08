@@ -20,7 +20,7 @@
 
 	BASE CLASS = none
 
-	Copyright © 1994-98 by John Lindal. All rights reserved.
+	Copyright ï¿½ 1994-98 by John Lindal. All rights reserved.
 
  ******************************************************************************/
 
@@ -2183,7 +2183,7 @@ JAppendChar(JCharacter16 s1[], JCharacter16 c)
 
 	Assembled routines for dealing with string<->number conversion.
 
-	Copyright © 1992 John Lindal. All rights reserved.
+	Copyright ï¿½ 1992 John Lindal. All rights reserved.
 
  -----------------------------------------------------------------------------*/
 
@@ -2675,7 +2675,7 @@ JBoolean	neg,valid;
 	Assembled routines for dealing with string conversion.
 	These routines only require vanilla C.
 
-	Copyright © 1992 John Lindal. All rights reserved.
+	Copyright ï¿½ 1992 John Lindal. All rights reserved.
 
  -----------------------------------------------------------------------------*/
 
@@ -2794,7 +2794,7 @@ short i,j,len;
 
 size_t strlen16(const JCharacter16* str)
 {
-	size_t	len = 0xFFFFFFFF;
+	size_t	len = -1;
 	
 #if !__POWERPC__
 	

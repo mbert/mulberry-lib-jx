@@ -3,7 +3,7 @@
 
 	Assembled floating point routines.
 
-	Copyright © 1992-99 John Lindal. All rights reserved.
+	Copyright ï¿½ 1992-99 John Lindal. All rights reserved.
 
  ******************************************************************************/
 
@@ -145,7 +145,6 @@ JATanh
 
 namespace std
 {
-	double __cmath_power(double, unsigned int);
 	template double abs<double>(complex<double> const&);
 	template double arg<double>(complex<double> const&);
 	template complex<double> conj<double>(complex<double> const&);
