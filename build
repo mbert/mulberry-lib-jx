@@ -19,6 +19,11 @@ Linux)
 		echo "Building for Linux x86"
 		make linux_intel
 		;;
+
+		x86_64)
+		echo "Building for Linux x86_64"
+		make linux_intel_x86_64
+		;;
 	esac
 	;;
 

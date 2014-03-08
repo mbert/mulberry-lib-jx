@@ -174,6 +174,15 @@ linux_intel: linux_common
 	@${INSTALL_CMD}
 
 #
+# RedHat 8.x, 9.x, Fedora (gcc 3.x)
+#
+
+.PHONY : linux_intel_x86_64
+linux_intel_x86_64: linux_common
+	@ln -s sys/Linux-Intel-x86-64-gcc3  include/make/jx_config
+	@${INSTALL_CMD}
+
+#
 # 64-bit RedHat 5.x
 #
 
